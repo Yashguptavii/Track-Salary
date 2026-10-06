@@ -1,0 +1,73 @@
+{
+  "entities": {
+    "PayrollBatch": {
+      "title": "PayrollBatch",
+      "description": "Represents an uploaded monthly salary sheet batch",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "fileName": { "type": "string" },
+        "sourceType": { "type": "string" },
+        "month": { "type": "string" },
+        "uploadedAt": { "type": "string" },
+        "totalAmount": { "type": "number" },
+        "employeeCount": { "type": "number" },
+        "dispatchedCount": { "type": "number" },
+        "pendingCount": { "type": "number" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "fileName", "month", "totalAmount"]
+    },
+    "EmployeeRecord": {
+      "title": "EmployeeRecord",
+      "description": "Represents an employee salary record within a batch",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "empId": { "type": "string" },
+        "name": { "type": "string" },
+        "salary": { "type": "number" },
+        "formattedSalary": { "type": "string" },
+        "phone": { "type": "string" },
+        "cleanPhone": { "type": "string" },
+        "email": { "type": "string" },
+        "month": { "type": "string" },
+        "department": { "type": "string" },
+        "designation": { "type": "string" },
+        "account": { "type": "string" },
+        "whatsappStatus": { "type": "string" },
+        "emailStatus": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["id", "name", "salary"]
+    },
+    "ActivityLog": {
+      "title": "ActivityLog",
+      "description": "Audit trail log of WhatsApp / Email dispatches",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "timestamp": { "type": "string" },
+        "employeeName": { "type": "string" },
+        "channel": { "type": "string" },
+        "status": { "type": "string" },
+        "details": { "type": "string" }
+      },
+      "required": ["id", "timestamp", "employeeName", "channel", "status"]
+    }
+  },
+  "firestore": {
+    "/batches/{batchId}": {
+      "schema": { "$ref": "#/entities/PayrollBatch" },
+      "description": "Monthly payroll batches"
+    },
+    "/batches/{batchId}/employees/{employeeId}": {
+      "schema": { "$ref": "#/entities/EmployeeRecord" },
+      "description": "Employees in a payroll batch"
+    },
+    "/activity_logs/{logId}": {
+      "schema": { "$ref": "#/entities/ActivityLog" },
+      "description": "Dispatch audit activity logs"
+    }
+  }
+}

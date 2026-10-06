@@ -1,0 +1,6 @@
+{
+  "name": "PayPulse - Company Salary Dispatcher & Payroll Dashboard",
+  "description": "Smart salary sheet importer with automated column mapping, WhatsApp, Email and SMS salary notification dispatcher, and real-time tracking dashboard.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
